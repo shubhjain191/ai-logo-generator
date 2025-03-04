@@ -1,16 +1,25 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { Star, CheckCircle2 } from 'lucide-react'
 import HeroImage from '/public/image.png'
+import Link from 'next/link'
 
 const Hero = () => {
+ 
+  const [logoTitle, setLogoTitle] = useState('')
+
+
+
   const features = [
     "Instant AI Generation",
     "Full Commercial Rights",
     "High Resolution Exports",
     "Multiple File Formats",
-    "24/7 Customer Support"
+    "24/7 Customer Support",
+    "Unlimited Generations"
   ]
 
   return (
@@ -51,12 +60,14 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4 max-w-xl">
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Enter your logo name"
                   className="flex-1 h-[52px] px-6 rounded-xl border border-gray-200 
                     focus:outline-none focus:ring-2 focus:ring-blue-500 
                     text-gray-800 placeholder:text-gray-400
                     text-base"
+                    onChange={(e) => setLogoTitle(e.target.value)}
                 />
+                <Link href={`/create?logoTitle=${logoTitle}`}>
                 <Button className="
                   w-full sm:w-auto
                   h-[52px]
@@ -71,12 +82,10 @@ const Hero = () => {
                   flex items-center justify-center
                   min-w-[160px]
                 ">
-                  Get Started Free
+                  Get Started
                 </Button>
+                </Link>
               </div>
-              <p className="mt-2 text-sm text-gray-500">
-                No credit card required • Free 14-day trial
-              </p>
             </div>
           </div>
 
