@@ -2,11 +2,10 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { Star, CheckCircle2 } from 'lucide-react'
-import { HeroImage } from '@/public/image.png';
+import HeroImage from '/public/image.png'
 
 const Hero = () => {
   const features = [
-    "Professional & Unique Designs",
     "Instant AI Generation",
     "Full Commercial Rights",
     "High Resolution Exports",
