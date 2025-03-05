@@ -17,6 +17,9 @@ export default {
     LogoColorPaletteTitle: 'Define Your Brand Colors',
     LogoColorPaletteDesc: 'Select a color palette that embodies your brand personality',
 
+    LoadingWaitDesc:'✨ Please wait a moment while we work our magic to bring your logo to life.',
+    LoadingWaitTitle:'Your logo is being created',
+
     pricingOptions: [
         {
             title: 'Free',

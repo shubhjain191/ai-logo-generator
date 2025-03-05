@@ -6,7 +6,6 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import LogoDesc from './_components/LogoDesc'
 import LogoColorPallete from './_components/LogoColorPallete'
 import LogoDesign from './_components/LogoDesigns'
-import LogoIdea from './_components/LogoIdea'
 import Pricingmodel from './_components/Pricingmodel'
 
 const CreateLogo = () => {
@@ -38,9 +37,6 @@ const CreateLogo = () => {
                     setIsStepValid(!!formData?.design)
                     break
                 case 5:
-                    setIsStepValid(!!formData?.idea)
-                    break
-                case 6:
                     setIsStepValid(!!formData?.plan)
                     break
                 default:
@@ -51,7 +47,7 @@ const CreateLogo = () => {
     }, [step, formData])
 
     const handleNext = () => {
-        if (isStepValid && step < 6) {
+        if (isStepValid && step < 5) {
             setStep(prev => prev + 1)
         }
     }
@@ -71,11 +67,11 @@ const CreateLogo = () => {
                         <div className="h-2 bg-gray-100 rounded-full">
                             <div 
                                 className="h-2 bg-blue-500 rounded-full transition-all duration-300"
-                                style={{ width: `${(step / 6) * 100}%` }}
+                                style={{ width: `${(step / 5) * 100}%` }}
                             />
                         </div>
                         <div className="mt-2 text-sm text-gray-500 text-right">
-                            Step {step} of 6
+                            Step {step} of 5
                         </div>
                     </div>
 
@@ -84,8 +80,7 @@ const CreateLogo = () => {
                     {step === 2 && <LogoDesc onHandleInputChange={(value) => onHandleInputChange('desc', value)} formData={formData}/>}
                     {step === 3 && <LogoColorPallete onHandleInputChange={(value) => onHandleInputChange('pallette', value)} formData={formData}/>}
                     {step === 4 && <LogoDesign onHandleInputChange={(value) => onHandleInputChange('design', value)} formData={formData}/>}
-                    {step === 5 && <LogoIdea onHandleInputChange={(value) => onHandleInputChange('idea', value)} formData={formData}/>}
-                    {step === 6 && <Pricingmodel onHandleInputChange={(value) => onHandleInputChange('plan', value)} formData={formData}/>}
+                    {step === 5 && <Pricingmodel onHandleInputChange={(value) => onHandleInputChange('plan', value)} formData={formData}/>}
                     
                     {/* Navigation Buttons */}
                     <div className="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
@@ -109,7 +104,7 @@ const CreateLogo = () => {
                                     : 'bg-gray-200 cursor-not-allowed'} 
                                 text-white`}
                         >
-                            {step === 6 ? 'Generate Logo' : 'Continue'}
+                            {step === 5 ? 'Generate Logo' : 'Continue'}
                             <ArrowRight className="w-4 h-4" />
                         </Button>
                     </div>
