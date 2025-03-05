@@ -1,16 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import HeadingDescription from './HeadingDescription'
 import Lookup from '@/app/_data/Lookup'
 import Colors from '@/app/_data/Colors'
-import { Check, Palette } from 'lucide-react'
+import { Check, Palette, AlertCircle } from 'lucide-react'
 
-const LogoColorPallete = ({ onHandleInputChange }) => {
-  const [selectedOption, setSelectedOption] = useState(null)
+const LogoColorPallete = ({ onHandleInputChange, formData, setIsValid }) => {
+  const [selectedOption, setSelectedOption] = useState(formData?.pallette || null)
   const [hoveredPalette, setHoveredPalette] = useState(null)
+  const [showAlert, setShowAlert] = useState(!formData?.title || !formData?.desc)
+
+  // Update parent about validation state
+  useEffect(() => {
+    const isStepValid = !showAlert && selectedOption !== null
+    setIsValid?.(isStepValid)
+  }, [showAlert, selectedOption, setIsValid])
 
   const handleSelect = (paletteName) => {
+    if (!formData?.title || !formData?.desc) {
+      setShowAlert(true)
+      setIsValid?.(false)
+      return
+    }
     setSelectedOption(paletteName)
     onHandleInputChange(paletteName)
+    setShowAlert(false)
   }
 
   return (
@@ -19,6 +32,18 @@ const LogoColorPallete = ({ onHandleInputChange }) => {
         title={Lookup.LogoColorPaletteTitle}
         description={Lookup.LogoColorPaletteDesc}
       />
+
+      {/* Alert Message */}
+      {showAlert && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center gap-3 text-amber-800">
+          <AlertCircle className="w-5 h-5 flex-shrink-0" />
+          <p className="text-sm">
+            Please complete the previous steps (Logo Name and Description) before selecting a color palette.
+            You won't be able to proceed until all required steps are completed.
+          </p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {Colors.map((palette, index) => (
           <div 
@@ -27,9 +52,12 @@ const LogoColorPallete = ({ onHandleInputChange }) => {
             onMouseEnter={() => setHoveredPalette(palette.name)}
             onMouseLeave={() => setHoveredPalette(null)}
             className={`group bg-white border rounded-xl transition-all duration-300 
+              ${!formData?.title || !formData?.desc 
+                ? 'opacity-50 cursor-not-allowed' 
+                : 'cursor-pointer hover:shadow-md'}
               ${selectedOption === palette.name 
                 ? 'border-blue-500 shadow-lg' 
-                : 'border-gray-200 hover:border-gray-300 hover:shadow-md'}`}
+                : 'border-gray-200 hover:border-gray-300'}`}
           >
             {/* Palette Header */}
             <div className="p-4 border-b border-gray-100 flex items-center justify-between">

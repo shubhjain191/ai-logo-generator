@@ -16,4 +16,53 @@ export default {
     // Color Selection
     LogoColorPaletteTitle: 'Define Your Brand Colors',
     LogoColorPaletteDesc: 'Select a color palette that embodies your brand personality',
+
+    pricingOptions: [
+        {
+            title: 'Free',
+            price: '$0',
+            desc: 'Perfect for trying out the platform',
+            features: [
+                'Generate 3 logos per day',
+                'Basic customization options',
+                'Standard quality downloads',
+                'PNG downloads only',
+                'Basic color variations'
+            ],
+            buttonText: 'Start Free',
+            popular: false
+        },
+        {
+            title: 'Pro',
+            price: '$19',
+            desc: 'Ideal for businesses and professionals',
+            features: [
+                'Unlimited logo generations',
+                'Advanced customization tools',
+                'High resolution downloads',
+                'All file formats (PNG, SVG, PDF)',
+                'Multiple color variations',
+                'Remove background',
+                'Priority support'
+            ],
+            buttonText: 'Go Pro',
+            popular: true
+        },
+        {
+            title: 'Enterprise',
+            price: '$49',
+            descri: 'Complete brand identity solution',
+            features: [
+                'Everything in Pro plan',
+                'Brand guidelines document',
+                'Social media kit',
+                'Business card designs',
+                'Unlimited revisions',
+                'Dedicated support',
+                'Commercial usage rights'
+            ],
+            buttonText: 'Contact Sales',
+            popular: false
+        }
+    ]
 }

@@ -4,7 +4,7 @@ import HeadingDescription from './HeadingDescription'
 import Lookup from '@/app/_data/Lookup'
 import { useSearchParams } from 'next/navigation'
 
-const LogoTitle = ({onHandleInputChange}) => {
+const LogoTitle = ({onHandleInputChange, formData}) => {
 
     const searchParams = useSearchParams()
     const [title, setTitle] = useState(searchParams.get('title')?? '')
@@ -25,7 +25,7 @@ const LogoTitle = ({onHandleInputChange}) => {
             shadow-sm
             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
             transition-all duration-200"
-            defaultValue={title}
+            defaultValue={formData?.title || ''}
             onChange={(e) => onHandleInputChange(e.target.value)}
         />
       </div>

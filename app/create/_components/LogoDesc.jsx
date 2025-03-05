@@ -2,7 +2,7 @@ import React from 'react'
 import HeadingDescription from './HeadingDescription'
 import Lookup from '@/app/_data/Lookup'
 
-const LogoDesc = ({onHandleInputChange}) => {
+const LogoDesc = ({onHandleInputChange, formData}) => {
   return (
     <div className="space-y-8">
       <HeadingDescription
@@ -18,6 +18,7 @@ const LogoDesc = ({onHandleInputChange}) => {
             shadow-sm
             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
             transition-all duration-200"
+          value={formData?.desc || ''}
           onChange={(e) => onHandleInputChange(e.target.value)}
         />
       </div>
