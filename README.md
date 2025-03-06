@@ -1,6 +1,8 @@
 # AI Logo Generator 🚀
 
 *Build an AI-powered logo generator with Next.js, React, Gemini API, and Hugging Face*
+![image](https://github.com/user-attachments/assets/a7db4326-04d5-4c75-95c9-b59b1769db37)
+
 
 ## Description
 
